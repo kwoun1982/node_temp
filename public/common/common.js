@@ -16,4 +16,6 @@
 //var myLogger = new Log4js.getLogger("myCategory");
 $(document).ready(function () {
     init();
+    init();
+    init();
 });
