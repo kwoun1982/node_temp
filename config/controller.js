@@ -1,7 +1,7 @@
 /*
  *************************************************************************
- * @source  : index.js
- * @desc    :
+ * @source  : controller.js
+ * @desc    : 전역 컨드롤러 설정
  *------------------------------------------------------------------------
  * VER  DATE         AUTHOR      DESCRIPTION
  * ---  -----------  ----------  -----------------------------------------
@@ -11,26 +11,10 @@
  * Copyright(c) 2014 Simplatform,  All rights reserved.
  *************************************************************************
  */
-
-
-var G = require('../config/common');
 var express = require('express');
-var router = express.Router();
-var log = require('log4js').getLogger(__filename.substr(__filename.lastIndexOf("/") + 1));
+var app = express();
 
-router.get('/', function (req, res, next) {
+app.use('/', require('../routes/index'));
+app.use('/users', require('../routes/users'));
 
-
-    //============================
-    G.find("user", function (items) {
-        log.debug(items);
-    });
-
-    //============================
-
-
-    res.render('index', {title: 'Express'});
-
-
-});
-module.exports = router;
+module.exports.app = app;
