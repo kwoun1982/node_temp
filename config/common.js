@@ -1,7 +1,7 @@
 /*
  *************************************************************************
  * @source  : common.js
- * @desc    : 공통 js
+ * @desc    : 서버 공통 js
  *------------------------------------------------------------------------
  * VER  DATE         AUTHOR      DESCRIPTION
  * ---  -----------  ----------  -----------------------------------------
@@ -59,3 +59,35 @@ module.exports.find = function (collection, callback) {
         });
     });
 };
+
+
+// ##################################################
+// 씨리얼 포트
+// ##################################################
+var serialPort = require("serialport");
+var SerialPort = serialPort.SerialPort;
+
+module.exports.serial_list = function (callback) {
+    serialPort.list(function (err, ports) {
+        //ports.forEach(function (port) {
+        //    log.info(port);
+        //});
+        callback(ports);
+    });
+};
+
+module.exports.serial_con = function (callback) {
+    try {
+        var sp = new SerialPort("/dev/cu.usbserial-14143", {
+            baudrate: 9600,
+            manufacturer: 'FTDI',
+            locationId: '0x14143000',
+            vendorId: '0x0403',
+            productId: '0x6001'
+        });
+        callback(sp);
+    } catch (err) {
+        log.error(err);
+    }
+};
+
