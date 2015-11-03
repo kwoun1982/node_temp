@@ -1,6 +1,6 @@
 /*
  *************************************************************************
- * @source  : common.js
+ * @source  : index.js
  * @desc    : 클라이언트 공통 js
  *------------------------------------------------------------------------
  * VER  DATE         AUTHOR      DESCRIPTION
@@ -16,9 +16,16 @@ var INIT_CNT = 0;
 function init() {
     if (INIT_CNT == 0) {
         INIT_CNT++;
-        //TLOG("[kky] A010100.js :: ++++++++++++++++++++++++++++++++++++");
-        //TLOG("[kky] A010100.js :: " + "init() INIT_CNT : [" + INIT_CNT + "]");
-        //TLOG("[kky] A010100.js :: ++++++++++++++++++++++++++++++++++++");
+        console.log("[kky] index.js :: ++++++++++++++++++++++++++++++++++++");
+        console.log("[kky] index.js :: " + "init() INIT_CNT : [" + INIT_CNT + "]");
+        console.log("[kky] index.js :: ++++++++++++++++++++++++++++++++++++");
+        $("#serialTest_btn").on("click", function () {
+            SET_HTTP.send("serialTest_btn", {})
+        });
 
+        $("#qTest_btn").on("click", function () {
+            SET_HTTP.send("qTest_btn", {})
+        });
     }
+
 }

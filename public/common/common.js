@@ -17,3 +17,22 @@
 $(document).ready(function () {
     init();
 });
+
+var SET_HTTP = {
+    send: function (req, data) {
+        var SERVER_URL_REQ = "" + req;
+        $.ajax({
+            url: SERVER_URL_REQ,
+            dataType: 'json',
+            success: function (res) {
+                console.log("[kky] common.js :: // ##################################################");
+                console.log("[kky] common.js :: // setHttp.send() success RES ");
+                console.log(JSON.stringify(res,"","    "));
+                console.log("[kky] common.js :: // ##################################################");
+
+            },
+            error: function (res) {
+            }
+        });
+    }
+}

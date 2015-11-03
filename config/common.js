@@ -85,7 +85,9 @@ module.exports.serial_con = function (callback) {
             vendorId: '0x0403',
             productId: '0x6001'
         });
+
         callback(sp);
+
     } catch (err) {
         log.error(err);
     }
